@@ -1,6 +1,7 @@
 #include <sys/types.h>
 #include <unistd.h>
 #include <stdio.h>
+#include <sys/wait.h> 
 
 int main() {
     int rodando = 1;
@@ -15,7 +16,11 @@ int main() {
         while (rodando) {
             printf("Esperando o filho acabar!\n");
             sleep(1);
+
         }
+
+        wait(NULL);
+        printf("O processo filho terminou! O pai também vai terminar agora.\n");
     }
     return 0;
 }

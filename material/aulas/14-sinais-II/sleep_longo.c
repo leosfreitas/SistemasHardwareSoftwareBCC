@@ -10,11 +10,12 @@ void handler(int num) {
 
 int main(int argc, char *argv[]) {
     struct sigaction st;
-    st.sa_handler = handler;
-    st.sa_flags = SA_RESTART;
+    st.sa_handler = SIG_IGN;
+    st.sa_flags = 0;
     sigemptyset(&st.sa_mask);
-    sigaction(SIGTERM, &st, NULL);
+    sigaction(SIGTERM, &st, NULL); 
     
+    printf("Meu pid: %d\n", getpid());
     printf("Tempo restante: %d\n", sleep(20));
 
 }
